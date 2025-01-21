@@ -7,7 +7,7 @@ How to create your own roblox web game in seconds:
 3. (Api Version only) Setup a server running main.py
 4. Your done, you now have a fully functional roblox web game.
 
-[![Button Trello]][Trello] [![Button Discord]][Discord] [![Button Donate]][Donate]
+[![Button Trello]][Trello] [![Button Discord]][Discord] [![Button Donate]][Donate]
 
 <!---------------------------------------------------------------------------->
 
