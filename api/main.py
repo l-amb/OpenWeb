@@ -11,12 +11,14 @@ os.makedirs(SITES_DIR, exist_ok=True)
 @app.route('/save_site', methods=['POST'])
 def save_website_site():
     data = request.get_json()
+    print(data)
     
-    if data is None or 'domain' not in data:
+    if data is None:
         return jsonify({'error': 'Invalid site data or missing domain'}), 400
     
     # Generate a filename with domain and TLD (e.g., example.com.json)
-    domain = data['domain']
+    domain = f"{data['Info']['Name']}{data['Info']['tld']}"
+    print(domain)
     filename = f"{domain}.json"
     filepath = os.path.join(SITES_DIR, filename)
     
@@ -68,7 +70,7 @@ def search_by_owner():
 
             # Check if "Info" exists and has the "owner" key with the desired value
             info = site_data.get('Info', {})
-            if info.get('owner', '').lower() == owner_value.lower():
+            if int(info['owner']) == int(owner_value):
                 # Add the domain name without the .json extension to results
                 domain = site_filename.rsplit('.', 1)[0]
                 matching_domains.append(domain)
