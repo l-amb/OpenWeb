@@ -11,14 +11,12 @@ os.makedirs(SITES_DIR, exist_ok=True)
 @app.route('/save_site', methods=['POST'])
 def save_website_site():
     data = request.get_json()
-    print(data)
     
     if data is None:
         return jsonify({'error': 'Invalid site data or missing domain'}), 400
     
     # Generate a filename with domain and TLD (e.g., example.com.json)
     domain = f"{data['Info']['Name']}{data['Info']['tld']}"
-    print(domain)
     filename = f"{domain}.json"
     filepath = os.path.join(SITES_DIR, filename)
     
